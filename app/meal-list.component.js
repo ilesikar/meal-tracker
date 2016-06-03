@@ -11,43 +11,36 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var AppComponent, Meal;
+    var MealListComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            AppComponent = (function () {
-                function AppComponent() {
-                    this.meals = [
-                        new Meal("Pizza", "3 slices", 600),
-                        new Meal("Banana", "whole", 100)
-                    ];
+            MealListComponent = (function () {
+                function MealListComponent() {
+                    this.onMealSelect = new core_1.EventEmitter();
                 }
-                AppComponent.prototype.mealWasSelected = function (clickedMeal) {
-                    console.log('parent', clickedMeal);
+                MealListComponent.prototype.mealClicked = function (clickedMeal) {
+                    console.log('child', clickedMeal);
+                    this.selectedMeal = clickedMeal;
+                    this.onMealSelect.emit(clickedMeal);
                 };
-                AppComponent = __decorate([
+                MealListComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-app',
-                        template: "\n    <div class=\"container\">\n      <h1>Meal Tracker!</h1>\n      <meal-list [mealList]=\"meals\" (onMealSelect)=\"mealWasSelected($event)\">\n      </meal-list>\n    </div>\n  "
+                        selector: 'meal-list',
+                        inputs: ['mealList'],
+                        outputs: ['onMealSelect'],
+                        directives: [MealComponent],
+                        template: "\n  <meal-display *ngFor=\"#currentMeal of mealList\"\n    (click)=\"mealClicked(currentMeal)\"\n    [class.selected]=\"currentMeal === selectedMeal\"\n    [meal]=\"currentMeal\">\n  </meal-display>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
-                ], AppComponent);
-                return AppComponent;
+                ], MealListComponent);
+                return MealListComponent;
             }());
-            exports_1("AppComponent", AppComponent);
-            Meal = (function () {
-                function Meal(name, description, calories) {
-                    this.name = name;
-                    this.description = description;
-                    this.calories = calories;
-                }
-                return Meal;
-            }());
-            exports_1("Meal", Meal);
+            exports_1("MealListComponent", MealListComponent);
         }
     }
 });
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=meal-list.component.js.map
