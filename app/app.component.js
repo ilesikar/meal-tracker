@@ -25,6 +25,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 }
                 MealListComponent.prototype.mealClicked = function (clickedMeal) {
                     console.log('child', clickedMeal);
+                    this.selectedMeal = clickedMeal;
                     this.onMealSelect.emit(clickedMeal);
                 };
                 MealListComponent = __decorate([
