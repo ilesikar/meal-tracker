@@ -2,13 +2,28 @@ import { Component, EventEmitter } from 'angular2/core';
 // import {} from '';
 
 @Component({
+  selector: 'meal-display',
+  inputs: ['meal'],
+  template: `
+  <h3>{{ meal.name }}</h3>
+  `
+})
+
+export class MealComponent {
+  public meal: Meal;
+}
+
+@Component({
   selector: 'meal-list',
   inputs: ['mealList'],
   outputs: ['onMealSelect'],
+  directives: [MealComponent],
   template: `
-  <h3 *ngFor="#currentMeal of mealList" (click)="mealClicked(currentMeal)">
-    {{ currentMeal.name }}
-  </h3>
+  <meal-display *ngFor="#currentMeal of mealList"
+    (click)="mealClicked(currentMeal)"
+    [class.selected]="currentMeal === selectedMeal"
+    [meal]="currentMeal">
+  </meal-display>
   `
 })
 export class MealListComponent {
@@ -30,14 +45,14 @@ export class MealListComponent {
   template: `
     <div class="container">
       <h1>Meal Tracker!</h1>
-      <meal-list [mealList]="meals" (onTaskSelect)="taskWasSelected($event)">
+      <meal-list [mealList]="meals" (onMealSelect)="mealWasSelected($event)">
       </meal-list>
     </div>
   `
 })
 
 export class AppComponent {
-  public meals: Meal[];  // Task[] (or Array<Task>) identifies tasks as an array of Task objects
+  public meals: Meal[];
   constructor(){
     this.meals = [
       new Meal("Pizza", "3 slices", 600),
