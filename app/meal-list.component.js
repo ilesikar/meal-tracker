@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './meal.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,12 +10,15 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, meal_component_1;
     var MealListComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (meal_component_1_1) {
+                meal_component_1 = meal_component_1_1;
             }],
         execute: function() {
             MealListComponent = (function () {
@@ -32,8 +35,8 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         selector: 'meal-list',
                         inputs: ['mealList'],
                         outputs: ['onMealSelect'],
-                        directives: [MealComponent],
-                        template: "\n  <meal-display *ngFor=\"#currentMeal of mealList\"\n    (click)=\"mealClicked(currentMeal)\"\n    [class.selected]=\"currentMeal === selectedMeal\"\n    [meal]=\"currentMeal\">\n  </meal-display>\n  "
+                        directives: [meal_component_1.MealComponent],
+                        template: "\n    <meal-display *ngFor=\"#currentMeal of mealList\"\n      (click)=\"mealClicked(currentMeal)\"\n      [class.selected]=\"currentMeal === selectedMeal\"\n      [meal]=\"currentMeal\">\n    </meal-display>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], MealListComponent);

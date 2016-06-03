@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './meal-list.component', './meal.model'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,19 +10,25 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var AppComponent, Meal;
+    var core_1, meal_list_component_1, meal_model_1;
+    var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (meal_list_component_1_1) {
+                meal_list_component_1 = meal_list_component_1_1;
+            },
+            function (meal_model_1_1) {
+                meal_model_1 = meal_model_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
                     this.meals = [
-                        new Meal("Pizza", "3 slices", 600),
-                        new Meal("Banana", "whole", 100)
+                        new meal_model_1.Meal("Pizza", "3 slices", 600),
+                        new meal_model_1.Meal("Banana", "whole", 100)
                     ];
                 }
                 AppComponent.prototype.mealWasSelected = function (clickedMeal) {
@@ -31,22 +37,14 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <div class=\"container\">\n      <h1>Meal Tracker!</h1>\n      <meal-list [mealList]=\"meals\" (onMealSelect)=\"mealWasSelected($event)\">\n      </meal-list>\n    </div>\n  "
+                        directives: [meal_list_component_1.MealListComponent],
+                        template: "\n    <div class=\"container\">\n      <h1>Meal Tracker!</h1>\n      <meal-list [mealList]=\"meals\"\n      (onMealSelect)=\"mealWasSelected($event)\">\n      </meal-list>\n    </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
             }());
             exports_1("AppComponent", AppComponent);
-            Meal = (function () {
-                function Meal(name, description, calories) {
-                    this.name = name;
-                    this.description = description;
-                    this.calories = calories;
-                }
-                return Meal;
-            }());
-            exports_1("Meal", Meal);
         }
     }
 });
