@@ -13,5 +13,9 @@
     "node_modules",
     "typings/main",
     "typings/main.d.ts"
+  ],
+  "files": [
+    "app/meal-tracker-create-meals.ts",
+    "app/meal-tracker-classes-interfaces.ts"
   ]
 }
