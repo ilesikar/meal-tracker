@@ -15,12 +15,15 @@
     "typings/main.d.ts"
   ],
   "files": [
+    "app/meal-tracker.ts",
     "app/meal-tracker-create-meals.ts",
     "app/meal-tracker-classes-interfaces.ts",
     "app/main.ts",
     "app/app.component.ts",
     "app/edit-meal-details.component.ts",
     "app/meal-list.component.ts",
-    "app/meal.component.ts"
+    "app/meal.component.ts",
+    "app/meal.model.ts",
+    "app/new-meal.component.ts"
   ]
 }

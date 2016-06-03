@@ -1,10 +1,14 @@
-import { Component } from 'angular2/core';
+import { Component, EventEmitter } from 'angular2/core';
 import { Meal } from './meal.model';
 
 @Component({
   selector: 'new-meal',
+  outputs: ['onSubmitNewMeal'],
   template: `
-  <h3>Blank template</h3>
+  <div class="meal-form">
+  <h3>Add A Meal:</h3>
+  <input placeholder="Name" class="col-sm-8 input-lg">
+  <button (click)="addTask()">Add</button>
   `
 })
 
