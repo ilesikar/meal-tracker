@@ -25,16 +25,21 @@ System.register(['angular2/core', './meal.model'], function(exports_1, context_1
                 function NewMealComponent() {
                     this.onSubmitNewMeal = new core_1.EventEmitter();
                 }
-                NewMealComponent.prototype.addMeal = function (userName) {
-                    var newMeal = new meal_model_1.Meal(userName.value, "description", 500);
-                    this.onSubmitNewMeal.emit(userName.value);
+                NewMealComponent.prototype.addMeal = function (userName, newDescription, newCalories) {
+                    var name = userName.value;
+                    var description = newDescription.value;
+                    var calories = parseInt(newCalories.value);
+                    var newMeal = new meal_model_1.Meal(name, description, calories, this.mealList.length);
+                    this.onSubmitNewMeal.emit(newMeal);
                     userName.value = "";
+                    newDescription.value = "";
+                    newCalories.value = "";
                 };
                 NewMealComponent = __decorate([
                     core_1.Component({
                         selector: 'new-meal',
                         outputs: ['onSubmitNewMeal'],
-                        template: "\n  <div class=\"meal-form\">\n    <h3>Add A Meal:</h3>\n    <input placeholder=\"Name\" class=\"col-sm-8 input-lg\" #newName>\n    <button (click)=\"addMeal(newName)\" class=\"btn-success btn-lg add-button\">Add</button>\n  </div>\n  "
+                        template: "\n  <div class=\"meal-form\">\n    <h3>Add A Meal:</h3>\n    <input placeholder=\"Name\" class=\"col-sm-8 input-lg\" #newName>\n    <input placeholder=\"Description\" class=\"col-sm-8 input-lg\" #newDescription>\n    <input placeholder=\"Calories\" class=\"col-sm-8 input-lg\" #newCalories>\n    <button (click)=\"addMeal(newName, newDescription, newCalories)\" class=\"btn-success btn-lg add-button\">Add</button>\n  </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], NewMealComponent);

@@ -27,8 +27,8 @@ System.register(['angular2/core', './meal-list.component', './meal.model'], func
             AppComponent = (function () {
                 function AppComponent() {
                     this.meals = [
-                        new meal_model_1.Meal("Pizza", "3 slices", 600),
-                        new meal_model_1.Meal("Banana", "whole", 100)
+                        new meal_model_1.Meal("Pizza", "3 slices", 600, 0),
+                        new meal_model_1.Meal("Banana", "whole", 100, 1)
                     ];
                 }
                 AppComponent.prototype.mealWasSelected = function (clickedMeal) {
