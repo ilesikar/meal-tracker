@@ -40,7 +40,7 @@ System.register(['angular2/core', './meal.component', './meal.model', './edit-me
                     this.onMealSelect.emit(clickedMeal);
                 };
                 MealListComponent.prototype.createMeal = function (name, description, calories) {
-                    this.mealList.push(new meal_model_1.Meal(name, description, calories, this.taskList.length));
+                    this.mealList.push(new meal_model_1.Meal(name, description, calories, this.mealList.length));
                 };
                 MealListComponent = __decorate([
                     core_1.Component({

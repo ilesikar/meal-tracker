@@ -19,7 +19,7 @@ export class NewMealComponent {
     this.onSubmitNewMeal = new EventEmitter();
   }
   addMeal(userName: HTMLInputElement){
-    // var newMeal = new Meal(userName.value, 0);
+    var newMeal = new Meal(userName.value, "description", 500);
     this.onSubmitNewMeal.emit(userName.value);
     userName.value = "";
   }

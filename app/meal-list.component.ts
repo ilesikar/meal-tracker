@@ -35,7 +35,7 @@ export class MealListComponent {
 
   createMeal(name: string, description: string, calories: number): void {
     this.mealList.push(
-      new Meal(name, description, calories, this.taskList.length)
+      new Meal(name, description, calories, this.mealList.length)
     );
   }
 }
