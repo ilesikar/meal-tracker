@@ -16,6 +16,8 @@
   ],
   "files": [
     "app/meal-tracker-create-meals.ts",
-    "app/meal-tracker-classes-interfaces.ts"
+    "app/meal-tracker-classes-interfaces.ts",
+    "app/main.ts",
+    "app/app.component.ts"
   ]
 }
