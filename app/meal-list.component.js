@@ -1,4 +1,4 @@
-System.register(['angular2/core', './meal.component', './edit-meal-details.component', './new-meal.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './meal.component', './meal.model', './edit-meal-details.component', './new-meal.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './meal.component', './edit-meal-details.compo
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, meal_component_1, edit_meal_details_component_1, new_meal_component_1;
+    var core_1, meal_component_1, meal_model_1, edit_meal_details_component_1, new_meal_component_1;
     var MealListComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', './meal.component', './edit-meal-details.compo
             },
             function (meal_component_1_1) {
                 meal_component_1 = meal_component_1_1;
+            },
+            function (meal_model_1_1) {
+                meal_model_1 = meal_model_1_1;
             },
             function (edit_meal_details_component_1_1) {
                 edit_meal_details_component_1 = edit_meal_details_component_1_1;
@@ -36,13 +39,16 @@ System.register(['angular2/core', './meal.component', './edit-meal-details.compo
                     this.selectedMeal = clickedMeal;
                     this.onMealSelect.emit(clickedMeal);
                 };
+                MealListComponent.prototype.createMeal = function (name, description, calories) {
+                    this.mealList.push(new meal_model_1.Meal(name, description, calories, this.taskList.length));
+                };
                 MealListComponent = __decorate([
                     core_1.Component({
                         selector: 'meal-list',
                         inputs: ['mealList'],
                         outputs: ['onMealSelect'],
                         directives: [meal_component_1.MealComponent, edit_meal_details_component_1.EditMealDetailsComponent, new_meal_component_1.NewMealComponent],
-                        template: "\n    <meal-display *ngFor=\"#currentMeal of mealList\"\n      (click)=\"mealClicked(currentMeal)\"\n      [class.selected]=\"currentMeal === selectedMeal\"\n      [meal]=\"currentMeal\">\n    </meal-display>\n    <edit-meal-details *ngIf=\"selectedMeal\" [meal]=\"selectedMeal\">\n    </edit-meal-details>\n    <new-task></new-task>\n  "
+                        template: "\n    <meal-display *ngFor=\"#currentMeal of mealList\"\n      (click)=\"mealClicked(currentMeal)\"\n      [class.selected]=\"currentMeal === selectedMeal\"\n      [meal]=\"currentMeal\">\n    </meal-display>\n    <edit-meal-details *ngIf=\"selectedMeal\" [meal]=\"selectedMeal\">\n    </edit-meal-details>\n    <new-meal (onSubmitNewMeal)=\"createMeal($event)\"></new-meal>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], MealListComponent);
