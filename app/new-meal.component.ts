@@ -8,4 +8,9 @@ import { Meal } from './meal.model';
   `
 })
 
-export class NewMealComponent
+export class NewMealComponent {
+  public onSubmitNewMeal: EventEmitter<Meal>;
+  constructor() {
+    this.onSubmitNewMeal = new EventEmitter();
+  }
+}
