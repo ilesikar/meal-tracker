@@ -4,10 +4,14 @@ import { Meal } from './meal.model';
 @Component({
   selector: 'edit-meal-details',
   inputs: ['meal'],
-  template `
+  template: `
+    <div>
+      <h3>Edit Meal: </h3>
+      <input [(ngModel)]="meal.name" class="col-sm-8 input-lg meal-form"/>
+    </div>
   `
 })
 
-export class EditMealDetails.Component {
+export class EditMealDetailsComponent {
   public meal: Meal;
 }
